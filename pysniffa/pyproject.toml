@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel", "setuptools_scm[toml]>=5.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pysniffa"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
+dynamic = ["version"]
+dependencies = [
+]
+
+[project.optional-dependencies]
+dev = [
+    "black~=23.12.1",
+    "flake8~=7.0.0",
+    "isort~=5.13.2",
+    "mypy~=1.8.0",
+    "pytest~=7.4.4",
+    #"setuptools-scm~=8.0.4",
+]
+
+[project.scripts]
+#sniff = "sniff.cli:main"
+
+[tool.black]
+target-version = ['py39', 'py310', 'py311']
+include = '\.pyi?$'
+
+[tool.isort]
+force_grid_wrap = 0
+include_trailing_comma = true
+multi_line_output = 3
+use_parentheses = true
+
+[tool.mypy]
+exclude = "build/"
+
+[tool.pytest.ini_options]
+python_files = "test_*.py"
+testpaths = "tests"
